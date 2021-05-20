@@ -8,18 +8,27 @@ class car:
         self.max_speed = max_speed
 
     def sp(self, value):
-        self.speed += value
-        if self.speed > self.max_speed:
-            self.speed = self.max_speed
-        if self.speed < 0:
-            self.speed = 0
+        # print(type(value)) # можно раскомментить и посмотреть реальный тип параметра
+        if type(value) == int:
+            self.speed += value
+            if self.speed > self.max_speed:
+                self.speed = self.max_speed
+            if self.speed < 0:
+                self.speed = 0
+        else:
+            raise TypeError("Ошибка ввода числа")
 
 
 car1 = car('Nissan', 'Primera', 'blue', 'petrol', 0, 210)
 car2 = car('Kia', 'Sportage', 'beige', 'petrol', 40, 180)
-# car1.sp(40)
-# print(car1.speed)
-# car1.sp(40)
-# print(car1.speed)
-# car1.sp(-100)
-# print(car1.speed)
+
+try:
+    car1.sp(220)
+    car1.sp(-150)
+    car2.sp(200)
+    car2.sp(-100)
+    print(car1.speed)
+    print(car2.speed)
+except TypeError as e:
+    print(e)
+
