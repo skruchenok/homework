@@ -18,6 +18,12 @@ class car:
         else:
             raise TypeError("Ошибка ввода числа")
 
+    def col(self, new_color):
+        if type(new_color) == str:
+            self.color = new_color
+        else:
+            raise TypeError("Ошибка ввода цвета")
+
 
 car1 = car('Nissan', 'Primera', 'blue', 'petrol', 0, 210)
 car2 = car('Kia', 'Sportage', 'beige', 'petrol', 40, 180)
@@ -32,3 +38,10 @@ try:
 except TypeError as e:
     print(e)
 
+try:
+    car1.col('black')
+    car2.col('pink')
+    print(car1.color)
+    print(car2.color)
+except TypeError as e:
+    print(e)
