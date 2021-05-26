@@ -2,23 +2,23 @@ import datetime
 
 
 class Ad:
-    def __init__(self, heading, description, author, date_and_time, number_of_views):
+    def __init__(self, heading, description, author):
         self.heading = heading
         self.description = description
         self.author = author
-        self.date_and_time = date_and_time
-        self.number_of_views = number_of_views
+        self.date_and_time = datetime.datetime.today()
+        self.number_of_views = 0
 
     def __str__(self):
-        return f"{self.heading}, {self.description}, {self.author}, {self.date_and_time}, {self.number_of_views}"
+        return f"{self.heading}, {self.description}, {self.author}"
 
-    def head(self, value):
+    def edit_head(self, value):
         if type(value) == str:
             self.heading = value
         else:
             raise TypeError("Ошибка ввода текста")
 
-    def content(self, value):
+    def edit_content(self, value):
         if type(value) == str:
             self.description = value
         else:
@@ -30,8 +30,16 @@ class Ad:
 
 
 date_in_time = datetime.datetime.now()
-ad1 = Ad('катушка', 'продам катушку недорого', 'Сергей', str(date_in_time), 0)
-ad1.head('Sherman Pro 4000')
-ad1.content('Продам катушку! Цена 100 рублей.')
+ad1 = Ad('катушка', 'продам катушку недорого', 'Сергей')
+try:
+    ad1.edit_head('Sherman Pro 4000')
+    ad1.edit_content('Продам катушку! Цена 100 рублей.')
+except TypeError as e:
+    print(e)
 ad1.view()
+print(ad1.number_of_views)
 ad1.view()
+print(ad1.number_of_views)
+ad1.view()
+print(ad1.number_of_views)
+print(ad1.date_and_time)
