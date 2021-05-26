@@ -26,12 +26,12 @@ class Ad:
 
     def view(self):
         self.number_of_views += 1
-        return self
+        print(self)
 
 
 date_in_time = datetime.datetime.now()
 ad1 = Ad('катушка', 'продам катушку недорого', 'Сергей', str(date_in_time), 0)
 ad1.head('Sherman Pro 4000')
 ad1.content('Продам катушку! Цена 100 рублей.')
-print(ad1.view())
-print(ad1.view())
+ad1.view()
+ad1.view()
